@@ -5,7 +5,7 @@ The app tries to download top alexa websites and their assets multiple times thr
 
 ## How To
 
-- Install `python 2.7` and `pip` for your distribution
+- Install `wget 1.15`, `python 2.7` and `pip` for your distribution
 - Install virtual environment from pip: `pip install virtualenv`
 - Create a virtual environment `virtualenv env` from project root
 - Run `source env/bin/activate`
