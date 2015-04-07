@@ -4,12 +4,12 @@ import multiprocessing, csv, os
 from time import sleep
 from datetime import datetime
 
-SITES_CSV = "top-10.csv" # Fields (w/o headers): serial no, url/hostname
-REQUEST_COUNT = 5
+SITES_CSV = "top-1m.csv" # Fields (w/o headers): serial no, url/hostname
+REQUEST_COUNT = 1
 LOG_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logs")
 
 # Things which make my life easier
-num_cores = multiprocessing.cpu_count()
+num_cores = multiprocessing.cpu_count() * 25
 time_now = lambda: datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f')
 
 # Create log dir
@@ -23,13 +23,17 @@ r = csv.reader(open(SITES_CSV))
 # --user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:21.0) Gecko/20100101 Firefox/21.0"
 
 def processInput(site):
+    print site
     for j in range(0, REQUEST_COUNT):
         call(
             [
                 "wget", 
+                "-p", 
                 "--no-cache", 
                 "-nd", 
                 "-nv", 
+                "--timeout=1", 
+                "--tries=0", 
                 "--span-hosts", 
                 "-erobots=off", 
                 "--delete-after", 
