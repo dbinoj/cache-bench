@@ -22,7 +22,7 @@ if not os.path.exists(WORK_FOLDER):
 
 os.chdir(WORK_FOLDER)
 
-r = csv.reader(open(SITES_CSV))
+r = csv.reader(open(os.path.join(HOME_FOLDER, SITES_CSV))
 
 
 # wget -p --no-cache -nd -nv --delete-after -e use_proxy=no -e http_proxy=172.16.0.2:8080 www.harvard.edu
