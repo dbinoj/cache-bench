@@ -33,6 +33,7 @@ def processInput(site):
     for j in range(0, REQUEST_COUNT):
         call(
             [
+                "time", 
                 "wget", 
                 "-p", 
                 "--no-cache", 
